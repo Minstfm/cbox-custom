@@ -1,9 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
-const xhttp = new XMLHttpRequest();
 
-xhttp.onload = function() {
-	console.log(document);
-}
-xhttp.open("GET", "https://www2.cbox.ws/box/?sec=onliners&boxid=2386998&boxtag=xY8OvF&_v=1063&xhr=1");
-xhttp.send();
+
+$(document).ready(function(){
+  $("button").click(function(){
+	$.ajax({
+				headers: { "Accept": "application/json"},
+				type: 'GET',
+				url: 'https://www2.cbox.ws/box/?sec=onliners&boxid=2386998&boxtag=xY8OvF&_v=1063&xhr=1',
+				crossDomain: true,
+				beforeSend: function(xhr){
+					xhr.withCredentials = true;
+			  },
+				success: function(data, textStatus, request){
+					console.log(data);
+				}
+	});
+  });
+});
 </script>
+</head>
+<body>
+
+<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+<button>Get External Content</button>
+
+</body>
+</html>
